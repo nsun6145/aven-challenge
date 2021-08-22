@@ -1,0 +1,261 @@
+/*Font*/
+
+@font-face {
+    font-family: 'GT America';
+    src: url('gt_america_regular.ttf');
+}
+
+/*-----------------------*/
+
+/* Classes */
+@media only screen and (min-width: 700px){
+    .highlight-button {
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 24px 15px;
+
+    position: static;
+    height: 42px;
+    left: 85px;
+    top: 0px;
+
+    /* Black */
+
+    background: #929292;
+    border-radius: 40px;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 32px;
+    }
+
+    .highlight-button :hover{
+        background: #505050;
+    }
+
+    .highlight-button a{
+    /* identical to box height, or 26px */
+
+    text-align: center;
+
+    /* White */
+
+    color: #FFFFFF;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+    }
+}
+/*--------------------*/
+
+html{
+    height: 100%;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+}
+
+body, footer{
+    font-family: GT America;
+}
+
+li a{
+    text-decoration: none;
+}
+
+#header-logo{
+    /* Logo */
+position: absolute;
+left: 24px;
+top: 27px;
+}
+
+@media only screen and (max-width: 800px){
+    #header-bar{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 700px){
+
+#curtain-menu{
+    visibility: hidden;
+}
+
+#header-bar{
+/* Header / Desktop */
+position: static;
+height: 74px;
+
+font-family: GT America;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 160%;
+
+background: #FFFFFF;
+}
+
+#top-center-navigation, #top-right-navigation{
+    visibility: visible ;
+}
+
+#top-center-navigation{
+/* Auto Layout */
+
+position: absolute;
+height: 42px;
+left: calc(50% - 278px/2);
+top: 20px;
+
+display: flex;
+align-items: center;
+text-align: center;
+
+}
+
+#top-center-navigation ul{
+    
+    list-style-type: none;
+}
+
+#top-center-navigation li{
+    display: inline;
+   
+}
+
+#top-center-navigation li a{
+position: static;
+
+color: #000000;
+background-color: #FFFFFF;
+
+margin: 0px 10px;
+}
+
+#top-center-navigation li a:hover{
+    background-color: #bababa;
+}
+
+#top-right-navigation{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+
+height: 42px;
+right: 24px;
+top: 20px;
+}
+
+#top-right-navigation ul{
+    
+    list-style-type: none;
+}
+
+#top-right-navigation li{
+    display: inline;
+   
+}
+
+#top-right-navigation li a{
+position: static;
+height: 26px;
+left: 0px;
+top: 8px;
+
+text-align: right;
+
+color: #000000;
+margin: 0px 32px;
+}
+
+#top-right-navigation li a:hover{
+    background-color: #bababa;
+}
+
+}
+#intro{
+
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 64px 24px;
+
+}
+
+#articles{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px 0px 88px;
+justify-content: center;
+}
+
+.article-block{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+
+width: 496px;
+margin: 0px 32px;
+
+box-shadow: 5px 5px 5px grey;
+
+}
+
+.article-block img{
+width: 496px;
+height: 376px;
+}
+
+#footer{
+    background: #d4cfcf;
+    clear:both;
+}
+
+#footer-navigation{
+
+display: flex;
+flex-direction: row;
+padding-left: 50px;
+}
+
+#footer-navigation ul{
+
+list-style-type: none;
+margin-left: 40px;
+}
+
+#footer-navigation li{
+display: block;
+margin: 8px 0px;
+}
+
+#footer-navigation li a{
+    text-decoration: underline;
+    color:#000000;
+}
+
+#footer-logo{
+position: relative;
+padding-top: 20px;
+padding-left: 20px;
+}
+
+

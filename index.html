@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style/desktop_style.css">
+    <link rel="stylesheet" media="screen and (max-width:700px)" href="style/small_style.css">
+
+    <title>Aven</title>
+
+<script>
+
+    window.onload = init;
+
+    function init(){
+        displayArticles();
+    }
+
+    function displayArticles(){
+        
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function(){
+            var articleJSON = JSON.parse(xhr.responseText);
+            var allArticles = articleJSON.articles;
+
+            var html = "";
+
+            for(var i; i < allArticles.length; i++){
+            article = allArticles[i];
+
+            /*  <div class="article-block">
+                <img src="img/#.jpg" alt="#">
+                <h2>Title</h2>
+                <p>Summary</p>
+                </div>
+            */
+        
+            html +="<div class='article-block'>";
+            html +="<img src=" + article.img + " alt=" + article.alt+">";
+            html +="<h2>" + article.title + "</h2>";
+            html +="<p>" + article.summary + "</p>";
+            html +="</div>";
+            }
+            document.querySelector('#articles');
+        }
+
+        var url = "articles.json"
+        xhr.open('GET',url,true);
+        xhr.send;
+
+    }
+
+    function openNav() {
+    document.getElementById("small-navigation").style.width = "50%";
+    }
+
+    function closeNav() {
+    document.getElementById("small-navigation").style.width = "0%";
+    }
+    
+</script>
+
+</head>
+<body>
+
+   <!--Actual header-->
+   <img src="img/aven-logo.svg" id="header-logo">
+    
+<div id="curtain-menu">
+   <span onclick="openNav()" media = "screen and (max-width:700px)">&#9776;</span>
+   <div id="small-navigation" class="curtain-overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="curtain-content">
+        <a href="/cards/">Card</a>
+        <a href="/app/">App</a>
+        <a href="/resources/">Resources</a>
+        <br>
+        <a href="/signin/">Sign In</a>
+        <a href="/offers">Check Offers</a>
+    </div>
+   </div>
+</div>
+   
+   <div id="header-bar">
+    <ul id="top-center-navigation">      
+        <li><a href="/cards/">Card</a></li>
+        <li><a href="/app/">App</a></li>
+        <li><a href="/resources/">Resources</a></li>
+    </ul>
+    <ul id="top-right-navigation"> 
+        <li><a href="/signin/">Sign In</a></li>
+        <li><a href="/offers" class="highlight-button">Check Offers</a></li>
+    </ul>
+</div>
+
+<div id="intro">
+    <h3>Education</h3>
+    <h1>Become an Expert</h1>
+    <h2>Grow your knowledge with our educational articles written by our team of experts.</h2>
+</div>
+
+<div id="articles">
+    <div class="article-block">
+        <img src="img/article1.jpg" alt="Article 1">
+        <h2>Home Equity Line of Credit(HELOC) Card: What is it?</h2>
+        <p>Are you looking to free up some cash? If so, you have probably thought about getting a second mortgage in your house</p>
+    </div>
+
+    <div class="article-block">
+        <img src="img/article2.jpg" alt="Article2">
+        <h2>Home Equity Line of Credit(HELOC) Card: How it Works</h2>
+        <p>Now that you understand what a HELOC Card is, let's dive into how it works. This article also explains the card.</p>
+    </div>
+</div>
+
+<div id="footer">
+    <img src="img/aven-logo.svg" id="footer-logo">
+    
+    <div id="footer-navigation">
+    <ul>
+        <li><h3>COMPANY</h3></li>
+        <li><a href="/about/">About Us</a></li>
+        <li><a href="/support/">Support</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
+    </ul>
+
+    <ul>
+        <li><h3>RESOURCES</h3></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms of Service</a></li>
+        <li><a href="/waitlist_terms/">Waitlist Terms</a></li>
+        <li><a href="/credit_education/">Credit Education</a></li>
+    </ul>
+    </div>
+   
+    <h4>©2021 Aven</h4>
+    </div>
+</div>
+
+</body>
+</html>
