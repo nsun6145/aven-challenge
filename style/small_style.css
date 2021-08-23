@@ -1,18 +1,3 @@
-
-/*Animations*/
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from {opacity: 1;}
-    top {opacity: 0;}
-}
-
-/*-----------------------*/
-
 /*
 FOR SMALL SCREENS AND TYPICAL SMART DEVICES
 */
