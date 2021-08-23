@@ -9,24 +9,25 @@
 
 <script>
 
-    window.onload = init;
 
-    function init(){
-        displayArticles();
-    }
+
+
+(function(){
+
+    window.onload = displayArticles();
 
     function displayArticles(){
-        
+        console.log("displayArticles has been called" );
         var xhr = new XMLHttpRequest();
+        console.log("XHR exists:" + xhr);
 
         xhr.onload = function(){
             var articleJSON = JSON.parse(xhr.responseText);
-            var allArticles = articleJSON.articles;
-
             var html = "";
 
-            for(var i; i < allArticles.length; i++){
-            article = allArticles[i];
+            for(var i = 0; i < articleJSON.length; i++){
+                console.log("Running loop");
+                article = articleJSON[i];
 
             /*  <div class="article-block">
                 <img src="img/#.jpg" alt="#">
@@ -34,22 +35,27 @@
                 <p>Summary</p>
                 </div>
             */
-        
+
             html +="<div class='article-block'>";
             html +="<img src=" + article.img + " alt=" + article.alt+">";
-            html +="<h2>" + article.title + "</h2>";
+            html +="<h2><a href=' "+ article.url+"'>" + article.title + "</a></h2>";
             html +="<p>" + article.summary + "</p>";
             html +="</div>";
+
+            console.log("HTML: " + html + "is not empty");
+
             }
-            document.querySelector('#articles');
+            document.querySelector('#articles').innerHTML = html;
+            
         }
 
-        var url = "articles.json"
+        //Address here is from the json-server in NodeJS
+        var url = "http://localhost:3000/articles";
         xhr.open('GET',url,true);
-        xhr.send;
+        xhr.send();
 
     }
-
+    }())
     function openNav() {
     document.getElementById("small-navigation").style.width = "50%";
     }
@@ -99,18 +105,7 @@
     <h2>Grow your knowledge with our educational articles written by our team of experts.</h2>
 </div>
 
-<div id="articles">
-    <div class="article-block">
-        <img src="img/article1.jpg" alt="Article 1">
-        <h2>Home Equity Line of Credit(HELOC) Card: What is it?</h2>
-        <p>Are you looking to free up some cash? If so, you have probably thought about getting a second mortgage in your house</p>
-    </div>
-
-    <div class="article-block">
-        <img src="img/article2.jpg" alt="Article2">
-        <h2>Home Equity Line of Credit(HELOC) Card: How it Works</h2>
-        <p>Now that you understand what a HELOC Card is, let's dive into how it works. This article also explains the card.</p>
-    </div>
+<div id="articles"> 
 </div>
 
 <div id="footer">
