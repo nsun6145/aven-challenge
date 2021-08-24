@@ -1,135 +1,129 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="style/desktop_style.css">
     <link rel="stylesheet" media="screen and (max-width:1100px)" href="style/small_style.css">
 
     <title>Aven</title>
 
-<script>
+    <script>
+        (function () {
+            //Display articles in json when webpage is loaded.
+            window.onload = displayArticles();
 
+            function displayArticles() {
+                var xhr = new XMLHttpRequest();
 
+                xhr.onload = function () {
+                    var articleJSON = JSON.parse(xhr.responseText);
+                    var html = "";
 
+                    for (var i = 0; i < articleJSON.length; i++) {
+                        article = articleJSON[i];
 
-(function(){
+                        /*  <div class="article-block">
+                            <img src="img/#.jpg" alt="#">
+                            <h2>Title</h2>
+                            <p>Summary</p>
+                            </div>
+                        */
 
-    window.onload = displayArticles();
+                        html += "<div class='article-block'>";
+                        html += "<img src=" + article.img + " alt=" + article.alt + ">";
+                        html += "<h2><a href=' " + article.url + "'>" + article.title + "</a></h2>";
+                        html += "<p>" + article.summary + "</p>";
+                        html += "</div>";
 
-    function displayArticles(){
-        console.log("displayArticles has been called" );
-        var xhr = new XMLHttpRequest();
-        console.log("XHR exists:" + xhr);
+                        console.log("HTML: " + html + "is not empty");
 
-        xhr.onload = function(){
-            var articleJSON = JSON.parse(xhr.responseText);
-            var html = "";
-
-            for(var i = 0; i < articleJSON.length; i++){
-                console.log("Running loop");
-                article = articleJSON[i];
-
-            /*  <div class="article-block">
-                <img src="img/#.jpg" alt="#">
-                <h2>Title</h2>
-                <p>Summary</p>
-                </div>
-            */
-
-            html +="<div class='article-block'>";
-            html +="<img src=" + article.img + " alt=" + article.alt+">";
-            html +="<h2><a href=' "+ article.url+"'>" + article.title + "</a></h2>";
-            html +="<p>" + article.summary + "</p>";
-            html +="</div>";
-
-            console.log("HTML: " + html + "is not empty");
-
+                    }
+                    document.querySelector('#articles').innerHTML = html;
+                }
+                //Address here is from the json-server in NodeJS
+                var url = "http://localhost:3000/articles";
+                xhr.open('GET', url, true);
+                xhr.send();
             }
-            document.querySelector('#articles').innerHTML = html;
-            
+        }())
+        function openNav() {
+            document.getElementById("small-navigation").style.width = "50%";
         }
 
-        //Address here is from the json-server in NodeJS
-        var url = "http://localhost:3000/articles";
-        xhr.open('GET',url,true);
-        xhr.send();
-
-    }
-    }())
-    function openNav() {
-    document.getElementById("small-navigation").style.width = "50%";
-    }
-
-    function closeNav() {
-    document.getElementById("small-navigation").style.width = "0%";
-    }
-    
-</script>
+        function closeNav() {
+            document.getElementById("small-navigation").style.width = "0%";
+        }
+    </script>
 
 </head>
+
 <body>
 
-   <img src="img/aven-logo.svg" id="header-logo">
-    
-<div id="curtain-menu">
-   <span onclick="openNav()" media = "screen and (max-width:1100px)">&#9776;</span>
-   <div id="small-navigation" class="curtain-overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="curtain-content">
-        <a href="/cards/">Card</a>
-        <a href="/app/">App</a>
-        <a href="/resources/">Resources</a>
-        <br>
-        <a href="/signin/">Sign In</a>
-        <a href="/offers">Check Offers</a>
+    <img src="img/aven-logo.svg" id="header-logo" alt="Header logo">
+
+    <div id="curtain-menu">
+        <span onclick="openNav()" media="screen and (max-width:1100px)">&#9776;</span>
+        <div id="small-navigation" class="curtain-overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="curtain-content">
+                <a href="/cards/">Card</a>
+                <a href="/app/">App</a>
+                <a href="/resources/">Resources</a>
+                <br>
+                <a href="/signin/">Sign In</a>
+                <a href="/offers">Check Offers</a>
+            </div>
+        </div>
     </div>
-   </div>
-</div>
-   
-   <div id="header-bar">
-    <ul id="top-center-navigation">      
-        <li><a href="/cards/">Card</a></li>
-        <li><a href="/app/">App</a></li>
-        <li><a href="/resources/">Resources</a></li>
-    </ul>
-    <ul id="top-right-navigation"> 
-        <li><a href="/signin/">Sign In</a></li>
-        <li><a href="/offers" class="highlight-button">Check Offers</a></li>
-    </ul>
-</div>
 
-<div id="intro">
-    <h3>EDUCATION</h3>
-    <h1>Become an Expert</h1>
-    <h2>Grow your knowledge with our educational articles written by our team of experts.</h2>
-</div>
-
-<div id="articles"> 
-</div>
-
-<div id="footer">
-    <img src="img/aven-logo.svg" id="footer-logo">
-    
-    <div id="footer-navigation">
-    <ul>
-        <li><h3>COMPANY</h3></li>
-        <li><a href="/about/">About Us</a></li>
-        <li><a href="/support/">Support</a></li>
-        <li><a href="/contact/">Contact Us</a></li>
-    </ul>
-
-    <ul>
-        <li><h3>RESOURCES</h3></li>
-        <li><a href="/privacy/">Privacy</a></li>
-        <li><a href="/terms/">Terms of Service</a></li>
-        <li><a href="/waitlist_terms/">Waitlist Terms</a></li>
-        <li><a href="/credit_education/">Credit Education</a></li>
-    </ul>
+    <div id="header-bar">
+        <ul id="top-center-navigation">
+            <li><a href="/cards/">Card</a></li>
+            <li><a href="/app/">App</a></li>
+            <li><a href="/resources/">Resources</a></li>
+        </ul>
+        <ul id="top-right-navigation">
+            <li><a href="/signin/">Sign In</a></li>
+            <li><a href="/offers" class="highlight-button">Check Offers</a></li>
+        </ul>
     </div>
-   
-    <h4>©2021 Aven</h4>
-    </div>
-</div>
 
-</body>
+    <div id="intro">
+        <h3>EDUCATION</h3>
+        <h1>Become an Expert</h1>
+        <h2>Grow your knowledge with our educational articles written by our team of experts.</h2>
+    </div>
+
+    <div id="articles">
+    </div>
+
+    <div id="footer">
+        <img src="img/aven-logo.svg" id="footer-logo" alt="Footer logo">
+
+        <div id="footer-navigation">
+            <ul>
+                <li>
+                    <h3>COMPANY</h3>
+                </li>
+                <li><a href="/about/">About Us</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/contact/">Contact Us</a></li>
+            </ul>
+
+            <ul>
+                <li>
+                    <h3>RESOURCES</h3>
+                </li>
+                <li><a href="/privacy/">Privacy</a></li>
+                <li><a href="/terms/">Terms of Service</a></li>
+                <li><a href="/waitlist_terms/">Waitlist Terms</a></li>
+                <li><a href="/credit_education/">Credit Education</a></li>
+            </ul>
+        </div>
+
+        <h4>©2021 Aven</h4>
+    </div>
+
+</body> 
 </html>

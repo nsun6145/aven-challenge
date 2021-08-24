@@ -12,239 +12,189 @@
 
 /*-----------------------*/
 
-/* Classes */
-@media only screen and (min-width: 700px){
+/* Non-content Classes (Buttons, etc.)*/
+
+@media only screen and (min-width: 1100px) {
     .highlight-button {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px 24px 15px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px 24px 15px;
+        height: 42px;
+        left: 85px;
+        background: #929292;
+        border-radius: 40px;
+        order: 1;
 
-    position: static;
-    height: 42px;
-    left: 85px;
-    top: 0px;
-
-    background: #929292;
-    border-radius: 40px;
-
-    order: 1;
-    flex-grow: 0;
-    margin: 0px 32px;
+        margin: 0px 32px;
     }
-
-    .highlight-button :hover{
+    .highlight-button :hover {
         background: #505050;
     }
-
-    .highlight-button a{
-    text-align: center;
-    color: #FFFFFF;
+    .highlight-button a {
+        text-align: center;
     }
 }
+
 /*--------------------*/
 
-html{
+html {
     height: 100%;
 }
 
-html,body{
-    margin:0;
-    padding:0;
-}
-
-body, footer{
+body, footer {
     font-family: GT America;
 }
 
-li a{
+li a {
     text-decoration: none;
 }
 
-#header-logo{
-position: absolute;
-left: 24px;
-top: 27px;
+#header-logo {
+    position: absolute;
+    left: 24px;
+    top: 27px;
 }
 
-#intro h1{ font-family: GT America B; }
-#intro h2, h3{ color:#929292 }
-
-@media only screen and (min-width: 1100px){
-
-#background-image{
-    z-index: -1;
+#intro h1 {
+    font-family: GT America B;
 }
 
-#curtain-menu{
-    visibility: hidden;
+#intro h2, h3 {
+    color: #929292
 }
 
-#header-bar{
-height: 74px;
+@media only screen and (min-width: 1100px) {
+    #curtain-menu {
+        visibility: hidden;
+    }
+    #header-bar {
+        font-family: GT America B;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 160%;
+    }
+    #top-center-navigation, #top-right-navigation {
+        visibility: visible;
+    }
+    #top-center-navigation {
+        position: absolute;
+        height: 42px;
+        left: calc(50% - 278px/2);
+        top: 20px;
 
-font-family: GT America B;
-font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 160%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    #top-center-navigation ul {
+        list-style-type: none;
+    }
+    #top-center-navigation li {
+        display: inline;
+    }
+    #top-center-navigation li a {
+        color: #000000;
+        background-color: #FFFFFF;
+        margin: 0px 10px;
+    }
+    #top-center-navigation li a:hover {
+        background-color: #bababa;
+    }
+    #top-right-navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
 
-background: #FFFFFF;
+        position: absolute;
+        height: 42px;
+        right: 24px;
+        top: 20px;
+    }
+    #top-right-navigation ul {
+        list-style-type: none;
+    }
+    #top-right-navigation li {
+        display: inline;
+    }
+    #top-right-navigation li a {
+        height: 26px;
+        top: 8px;
+        text-align: right;
+        color: #000000;
+        margin: 0px 32px;
+    }
+    #top-right-navigation li a:hover {
+        background-color: #bababa;
+    }
 }
 
-#top-center-navigation, #top-right-navigation{
-    visibility: visible ;
+#intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 64px 24px;
 }
 
-#top-center-navigation{
-/* Auto Layout */
+#articles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-position: absolute;
-height: 42px;
-left: calc(50% - 278px/2);
-top: 20px;
-
-display: flex;
-align-items: center;
-text-align: center;
-
+    padding: 0px 0px 88px;
+    justify-content: center;
 }
 
-#top-center-navigation ul{
-    
-    list-style-type: none;
+.article-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 496px;
+    margin: 0px 32px;
+    box-shadow: 5px 5px 5px grey;
 }
 
-#top-center-navigation li{
-    display: inline;
-   
+.article-block a {
+    color: #000000;
 }
 
-#top-center-navigation li a{
-
-color: #000000;
-background-color: #FFFFFF;
-
-margin: 0px 10px;
+.article-block img {
+    width: 496px;
+    height: 376px;
 }
 
-#top-center-navigation li a:hover{
-    background-color: #bababa;
-}
-
-#top-right-navigation{
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: center;
-padding: 0px;
-
-position: absolute;
-
-height: 42px;
-right: 24px;
-top: 20px;
-}
-
-#top-right-navigation ul{
-    
-    list-style-type: none;
-}
-
-#top-right-navigation li{
-    display: inline;
-   
-}
-
-#top-right-navigation li a{
-position: static;
-height: 26px;
-left: 0px;
-top: 8px;
-
-text-align: right;
-
-color: #000000;
-margin: 0px 32px;
-}
-
-#top-right-navigation li a:hover{
-    background-color: #bababa;
-}
-
-}
-#intro{
-
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-padding: 64px 24px;
-
-}
-
-#articles{
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px 0px 88px;
-justify-content: center;
-}
-
-.article-block{
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-
-width: 496px;
-margin: 0px 32px;
-
-box-shadow: 5px 5px 5px grey;
-
-}
-
-.article-block a{
-    color:#000000;
-}
-
-.article-block img{
-width: 496px;
-height: 376px;
-}
-
-#footer{
+#footer {
     background: #d4cfcf;
-    clear:both;
+    clear: both;
 }
 
-#footer-navigation{
-
-display: flex;
-flex-direction: row;
-padding-left: 50px;
+#footer-navigation {
+    display: flex;
+    flex-direction: row;
+    padding-left: 50px;
 }
 
-#footer-navigation ul{
-
-list-style-type: none;
-margin-left: 40px;
+#footer-navigation ul {
+    list-style-type: none;
+    margin-left: 40px;
 }
 
-#footer-navigation li{
-display: block;
-margin: 8px 0px;
+#footer-navigation li {
+    display: block;
+    margin: 8px 0px;
 }
 
-#footer-navigation li a{
+#footer-navigation li a {
     text-decoration: underline;
-    color:#666666;
+    color: #666666;
 }
 
-#footer-logo{
-position: relative;
-padding-top: 20px;
-padding-left: 20px;
+#footer-logo {
+    position: relative;
+    padding-top: 20px;
+    padding-left: 20px;
 }
-
-
